@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EasyFood | Register</title>
+</head>
+
+<body>
+
+<h3>Welcome to the register page, please register</h3>
+
+<form id="register_form" method="POST" action="./register" onsubmit="return validateForm()"> 
+	{% csrf_token %}
+	{{ register_form.as_p }}
+	
+	<input id="register_button" type="submit" value="Register" />
+</form>
+
+<p style="color: red;" id="register_err"></p>
+
+<script>
+
+	function validateForm() {
+		
+	let password = document.getElementById('id_password').value
+	let confirm_password = document.getElementById('id_confirm_password').value
+		
+	if (password == confirm_password) {
+		return true;
+	}
+	else {
+		document.getElementById('register_err').innerHTML = 'Passwords do not match'
+		return false;	
+	}
+	
+	
+	}
+
+</script>
+
+</body>
+
+</html>
